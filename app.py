@@ -4,7 +4,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-model=pickle.load(open('model.pkl','rb'))
+model=pickle.load(open('KNNmodel.pkl','rb'))
 
 
 @app.route('/')
@@ -21,10 +21,8 @@ def predict():
     prediction=model.predict_proba(final)
     output='{0:.{1}f}'.format(prediction[0][1], 2)
 
-    if output>str(0.5):
-        return render_template('frontend.html',pred='Your Forest is in Danger.\nProbability of fire occuring is {}'.format(output),bhai="kuch karna hain iska ab?")
-    else:
-        return render_template('frontend.html',pred='Your Forest is safe.\n Probability of fire occuring is {}'.format(output),bhai="Your Forest is Safe for now")
+    
+    return render_template('frontend.html',pred='The Possibility of Crime is {}'.format(output))
 
 
 if __name__ == '__main__':
