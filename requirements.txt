@@ -1,6 +1,6 @@
 flask
 numpy
-pickle
+pickle5
 sklearn
 metplotlib
 seaborn
