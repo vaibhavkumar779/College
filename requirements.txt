@@ -1,8 +1,9 @@
 flask
 numpy
 pickle5
-sklearn
-metplotlib
+scikit-learn:1.1
+scipy:1.8
+matplotlib
 seaborn
 warnings
 sys
