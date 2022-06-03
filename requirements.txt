@@ -1,0 +1,8 @@
+flask
+numpy
+pickle
+sklearn
+metplotlib
+seaborn
+warnings
+sois
