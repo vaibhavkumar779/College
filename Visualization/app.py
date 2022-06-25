@@ -47,10 +47,30 @@ def output():
     # ax = fig.subplots()
     # ax.plot([1, 2])
     input_data = graph_data(year = request.form['year'], age = request.form['age'], gender = request.form['gender'], crime = request.form['crime'])
-    print(input_data)
-    plt.plot([i[0] for i in input_data], [int(i[1]) for i in input_data])
-    plt.xlabel("state")
-    plt.ylabel("crime rate")  
+    print(input_data,"\n\n")
+    x = [i[0] for i in input_data] 
+    y = [int(i[1]) for i in input_data]
+
+    # Plot the figure.
+    plt.figure(figsize=(15,10))
+    freq_series = pd.Series(y)
+    ax = freq_series.plot(kind="bar")
+    ax.set_title("Crime Rate Comparision")
+    ax.set_xlabel("State / UT")
+    ax.set_ylabel("Crime Rate")
+    ax.set_xticklabels(x)
+
+    rects = ax.patches
+
+    # Make some labels.
+    labels = [i for i in y]
+
+    for rect, label in zip(rects, labels):
+        height = rect.get_height()
+        ax.text(
+            rect.get_x() + rect.get_width() / 2, height + 1, label, ha="center", va="bottom"
+        )
+    
     # plt.bar([i for i in range(max(map(lambda x: x[1], input_data)))],[i[1] for i in input_data], bottom = [i[0] for i in input_data], width = 0.4, color ='blue')
     # fig.show()
     plt.show()
